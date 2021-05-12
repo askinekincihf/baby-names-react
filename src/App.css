@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -35,6 +35,11 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+li {
+  display: inline-block;
+  margin: 0.2rem;
 }
 
 .name-container {
@@ -51,7 +56,7 @@
   margin: 3rem;
 }
 
-.name-female {
+li.f {
   border: 2px solid black;
   padding: 0.3rem;
   border-radius: 5px;
@@ -59,12 +64,17 @@
   margin: 0.2rem;
 }
 
-.name-male {
+li.m {
   border: 2px solid black;
   padding: 0.3rem;
   border-radius: 5px;
   background-color: cyan;
   margin: 0.2rem;
+}
+
+button {
+  border: none;
+  background: transparent;
 }
 
 .search {
@@ -82,4 +92,12 @@ input {
   height: 2rem;
   outline: none;
   font-size: 1.2rem;
+}
+
+.favourites-container {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid grey;
+  font-weight: 600;
 }

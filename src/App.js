@@ -1,34 +1,37 @@
 import React, { useState } from "react";
 import './App.css';
+import Search from "./components/Search";
 import BabyNamesData from "./data/BabyNamesData.json";
-import BabyNamesCard from "./BabyNamesCard"
-import Search from "./Search"
+import Favourites from "./components/Favourites";
+import NamePicker from "./components/NamePicker";
 
 function App() {
-  const [searchInput, setSearchInput] = useState("");
-  const handleSearchChange = (event) => {
-    setSearchInput(event.target.value);
-  }
+  const [searchValue, setSearchValue] = useState("");
+  const [favouriteNames, setFavouriteNames] = useState([]);
 
-  const babyNames = BabyNamesData.sort((previousName, currentName) => previousName.name.localeCompare(currentName.name));
-
-  const filteredBabyNames = babyNames.filter(baby => baby.name.toUpperCase().includes(searchInput.toUpperCase()))
+  // const moveFromFavourite = (event) => {
+  //   let clickedFavouriteName = favouriteNames.filter ((babyName) => babyName.name === event.target.value)
+  //   clickedFavouriteName = [...filteredBabyNames, ]
+  // }
 
   return (
     <div>
       <div className="name-container">
         <Search
-          babyNames={babyNames}
-          searchInput={searchInput}
-          handleSearchChange={handleSearchChange}
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
         />
-        {filteredBabyNames.map((babyName, index) => (
-          <BabyNamesCard
-            key={index}
-            babyName={babyName}
-            index={index}
-          />
-        ))}
+        <Favourites
+          names={BabyNamesData}
+          favouriteNames={favouriteNames}
+          setFavouriteNames={setFavouriteNames}
+        />
+        <NamePicker
+          names={BabyNamesData}
+          searchValue={searchValue}
+          favouriteNames={favouriteNames}
+          setFavouriteNames={setFavouriteNames}
+        />
       </div>
     </div>
   );
